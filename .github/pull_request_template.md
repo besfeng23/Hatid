@@ -43,6 +43,10 @@ Auth / Rider / Driver / Booking / Dispatch / Location / Payment / Admin / Fireba
 
 -
 
+## Unresolved questions
+
+-
+
 ## High-risk confirmation
 
 If this PR touches auth, payments, bookings, dispatch, driver assignment, location tracking, Firebase rules, secrets, admin permissions, or deployment, do not claim production readiness from this PR alone.
