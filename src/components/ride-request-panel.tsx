@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { Search } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 
 export type Driver = {
   name: string;

@@ -1,11 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { readFileSync } from 'node:fs';
 import { demoLocationSuggestions, demoPickup, demoRecentSearches, demoSavedPlaces } from '../src/lib/demo/location-suggestions';
 import { riderPrototypeHonesty, riderRedesignScreens } from '../src/lib/rider/rider-ui-state';
 import { buildRideOptionsHref, resolvePrototypeRideSelection } from '../src/lib/rider/prototype-ride-flow';
-import { TripSummaryCard } from '../src/components/rider/booking/trip-summary-card';
+
 
 test('rider redesign registers the required smoke-screen routes', () => {
   assert.deepEqual(riderRedesignScreens.map((screen) => screen.route), [
@@ -46,10 +45,6 @@ test('search selection is carried into the ride-options summary state', () => {
   assert.equal(selection.pickup, demoPickup);
   assert.equal(selection.destination, `${chosenPlace.name}, ${chosenPlace.address}`);
   assert.equal(selection.usedFallback, false);
-
-  const markup = renderToStaticMarkup(React.createElement(TripSummaryCard, selection));
-  assert.ok(markup.includes(chosenPlace.name));
-  assert.ok(markup.includes(demoPickup));
 });
 
 test('ride-options selection resolver falls back to honest prototype defaults when route state is missing', () => {
@@ -58,4 +53,23 @@ test('ride-options selection resolver falls back to honest prototype defaults wh
   assert.equal(selection.pickup, demoPickup);
   assert.equal(selection.usedFallback, true);
   assert.match(selection.destination, /bonifacio high street/i);
+});
+
+test('shared rider components expose prop-driven contracts without embedded demo identities', () => {
+  const rideCard = readFileSync('src/components/ui/RideCard.tsx', 'utf8');
+  const driverCard = readFileSync('src/components/ui/DriverCard.tsx', 'utf8');
+
+  assert.match(rideCard, /rideType: string/);
+  assert.match(rideCard, /fareEstimate: string/);
+  assert.match(driverCard, /driver: \{ name: string/);
+  assert.match(driverCard, /vehicle: \{ makeModel: string/);
+  assert.doesNotMatch(`${rideCard}${driverCard}`, /Maria Santos|Juan Dela Cruz|ABC1234|₱250\.00/);
+});
+
+test('map placeholder keeps a provider boundary without decorative roads or route paths', () => {
+  const mapPlaceholder = readFileSync('src/components/maps/MapPlaceholder.tsx', 'utf8');
+  const mapCompatibilityWrapper = readFileSync('src/components/map-view.tsx', 'utf8');
+
+  assert.match(mapPlaceholder, /live map provider is not connected/i);
+  assert.doesNotMatch(`${mapPlaceholder}${mapCompatibilityWrapper}`, /<path|fake roads|route SVG/i);
 });

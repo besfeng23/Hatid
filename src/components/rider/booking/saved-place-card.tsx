@@ -1,5 +1,6 @@
 import { Briefcase, Building2, Heart, Home, MoreHorizontal, Plane } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
+import { LocationCard } from '@/components/ui/LocationCard';
 import type { DemoPlace } from '@/lib/demo/location-suggestions';
 
 function Icon({ tag, name }: { tag?: DemoPlace['tag']; name: string }) {
@@ -11,25 +12,13 @@ function Icon({ tag, name }: { tag?: DemoPlace['tag']; name: string }) {
 }
 
 export function SavedPlaceCard({ place, onSelect, editable = false }: { place: DemoPlace; onSelect?: (place: DemoPlace) => void; editable?: boolean }) {
-  return (
-    <button
-      type="button"
-      onClick={() => onSelect?.(place)}
-      className="flex w-full items-center gap-4 rounded-[1.9rem] border border-slate-200 bg-white px-4 py-4 text-left shadow-sm"
-    >
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-        <Icon tag={place.tag} name={place.name} />
+  if (editable) {
+    return (
+      <div className="relative">
+        <LocationCard label={place.name} address={place.address} note={place.note} icon={<Icon tag={place.tag} name={place.name} />} onSelect={onSelect ? () => onSelect(place) : undefined} />
+        <Button type="button" variant="ghost" size="icon" aria-label={`Edit ${place.name}`} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full text-slate-500"><MoreHorizontal className="h-5 w-5" /></Button>
       </div>
-      <div className="min-w-0 flex-1">
-        <p className="text-[1.02rem] font-extrabold tracking-tight text-slate-950">{place.name}</p>
-        <p className="text-sm text-slate-500">{place.address}</p>
-        {place.note ? <p className="mt-1 text-xs text-slate-400">{place.note}</p> : null}
-      </div>
-      {editable ? (
-        <Button type="button" variant="ghost" size="icon" className="rounded-full text-slate-400">
-          <MoreHorizontal className="h-5 w-5" />
-        </Button>
-      ) : null}
-    </button>
-  );
+    );
+  }
+  return <LocationCard label={place.name} address={place.address} note={place.note} icon={<Icon tag={place.tag} name={place.name} />} onSelect={onSelect ? () => onSelect(place) : undefined} />;
 }

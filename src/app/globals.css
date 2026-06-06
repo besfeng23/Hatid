@@ -1,3 +1,4 @@
+@import '../styles/animations.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,21 +11,21 @@
     --card-foreground: 224 40% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 40% 12%;
-    --primary: 223 84% 61%;
+    --primary: 225 100% 40%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 25% 97%;
     --secondary-foreground: 224 40% 12%;
     --muted: 220 25% 97%;
     --muted-foreground: 220 16% 46%;
-    --accent: 223 84% 61%;
+    --accent: 225 100% 40%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 54%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 20% 90%;
     --input: 220 22% 92%;
-    --ring: 223 84% 61%;
+    --ring: 225 100% 40%;
     --radius: 1.15rem;
-    --sun: 223 84% 61%;
+    --sun: 225 100% 40%;
   }
 
   .dark {
@@ -34,21 +35,21 @@
     --card-foreground: 224 40% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 40% 12%;
-    --primary: 223 84% 61%;
+    --primary: 225 100% 40%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 25% 97%;
     --secondary-foreground: 224 40% 12%;
     --muted: 220 25% 97%;
     --muted-foreground: 220 16% 46%;
-    --accent: 223 84% 61%;
+    --accent: 225 100% 40%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 54%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 20% 90%;
     --input: 220 22% 92%;
-    --ring: 223 84% 61%;
+    --ring: 225 100% 40%;
     --radius: 1.15rem;
-    --sun: 223 84% 61%;
+    --sun: 225 100% 40%;
   }
 }
 
@@ -67,18 +68,5 @@
     text-rendering: optimizeLegibility;
   }
 
-  @keyframes draw-line {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.32);
-    }
-    70% {
-      box-shadow: 0 0 0 14px hsl(var(--primary) / 0);
-    }
-  }
 }
