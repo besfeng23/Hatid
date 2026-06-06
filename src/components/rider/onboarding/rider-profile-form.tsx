@@ -78,7 +78,7 @@ export function RiderProfileForm() {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="fullName">Full name *</Label>
-            <Input id="fullName" value={fullName} onChange={(event) => setFullName(event.target.value)} className="h-14 rounded-[1.35rem] border-slate-200" placeholder="Maria Santos" />
+            <Input id="fullName" value={fullName} onChange={(event) => setFullName(event.target.value)} className="h-14 rounded-[1.35rem] border-slate-200" placeholder="Enter your full name" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Mobile number *</Label>

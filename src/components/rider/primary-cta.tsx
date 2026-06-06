@@ -1,21 +1,13 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button, type ButtonProps } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
-type Props = React.ComponentProps<typeof Button> & { href?: string };
+type Props = ButtonProps & { href?: string };
 
 export function PrimaryCta({ href, children, className, ...props }: Props) {
-  const button = (
-    <Button
-      className={cn(
-        'h-14 w-full rounded-[1.4rem] bg-primary text-base font-bold text-primary-foreground shadow-lg disabled:opacity-100 disabled:bg-primary/55 disabled:text-white',
-        className
-      )}
-      {...props}
-    >
-      {children}
+  return (
+    <Button asChild={Boolean(href)} size="lg" className={cn('w-full rounded-[1.25rem]', className)} {...props}>
+      {href ? <Link href={href}>{children}</Link> : children}
     </Button>
   );
-
-  return href ? <Link href={href}>{button}</Link> : button;
 }

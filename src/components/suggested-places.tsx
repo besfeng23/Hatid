@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { SuggestedPlacesOutput } from '@/ai/flows/suggested-places';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';

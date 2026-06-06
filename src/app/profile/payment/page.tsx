@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 import { CreditCard, Landmark, Shield, Smartphone, Wallet } from 'lucide-react';
 import AuthGuard from '@/components/auth-guard';
 

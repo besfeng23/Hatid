@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import { collection, query } from 'firebase/firestore';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 import { ArrowLeft } from 'lucide-react';
 import { useCollection, useFirestore, useMemoFirebase, useUser } from '@/firebase';
 import { demoLocationSuggestions, demoRecentSearches, demoSavedPlaces, type DemoPlace } from '@/lib/demo/location-suggestions';

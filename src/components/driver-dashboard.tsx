@@ -4,10 +4,10 @@
 import { useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 import { EarningsChart } from '@/components/earnings-chart';
 import { TripHistoryTable } from '@/components/trip-history-table';
-import { Button } from './ui/button';
+import { Button } from './ui/Button';
 import { AlertTriangle, List, Map, Shield } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';

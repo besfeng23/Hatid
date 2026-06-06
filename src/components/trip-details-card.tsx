@@ -4,7 +4,7 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Star, User } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
+import { Card, CardContent } from './ui/Card';
 import { Driver } from './ride-request-panel';
 
 export function TripDetailsCard({ driver }: { driver: Driver }) {
